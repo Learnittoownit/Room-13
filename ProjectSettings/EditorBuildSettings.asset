@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/UI introduction.unity
+    guid: d71e11120dcee4cb0856b5a3612c0702
+  - enabled: 1
+    path: Assets/Dnk_Dev/HospitalHorrorPack/Map_Hosp1.unity
+    guid: b6ca1756db6b14945b4116ce8880ae82
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
