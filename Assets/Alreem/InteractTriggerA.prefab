@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2170742603645492648}
   - component: {fileID: 2899257045798869120}
   - component: {fileID: 678605001626929919}
-  - component: {fileID: 1865740740765293877}
   m_Layer: 0
   m_Name: InteractTriggerA
   m_TagString: Untagged
@@ -69,18 +68,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactText: {fileID: 0}
   notePanel: {fileID: 0}
---- !u!114 &1865740740765293877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5494169180982732780}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16b194695db5b7c418b5fc2e9bb44af7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractTriggerA: {fileID: 5494169180982732780}
-  Panel: {fileID: 0}
-  Key: {fileID: 0}
