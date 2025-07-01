@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nurse of Horror
+* source:	https://sketchfab.com/3d-models/nurse-of-horror-1ff4e40c27724291ae4d9cfd51c57239
+* author:	Sebastian Kansik (https://sketchfab.com/Pepego)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nurse of Horror" (https://sketchfab.com/3d-models/nurse-of-horror-1ff4e40c27724291ae4d9cfd51c57239) by Sebastian Kansik (https://sketchfab.com/Pepego) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
