@@ -1,0 +1,11 @@
+Model Information:
+* title:	table_e from FPS creator classic
+* source:	https://sketchfab.com/3d-models/table-e-from-fps-creator-classic-4e6dd9b34aaa4c13a9274598543ecb7e
+* author:	Garbage Raccoon (https://sketchfab.com/GarbageRaccoon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "table_e from FPS creator classic" (https://sketchfab.com/3d-models/table-e-from-fps-creator-classic-4e6dd9b34aaa4c13a9274598543ecb7e) by Garbage Raccoon (https://sketchfab.com/GarbageRaccoon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
