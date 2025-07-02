@@ -23,7 +23,15 @@ public class PlayerMovement : MonoBehaviour
         float horoizontal = Input.GetAxis("Horizontal") * PlayerSpeed;
         float vertical = Input.GetAxis("Vertical") * PlayerSpeed;
 
+    
+
         PlayerRB.linearVelocity = new Vector3(horoizontal, PlayerRB.linearVelocity.y, vertical);
+        Vector3 direction = transform.forward * vertical + transform.right * horoizontal;
+
+        direction.y = PlayerRB.linearVelocity.y;
+        PlayerRB.linearVelocity = direction;
+
+
 
         if (Input.GetKeyDown(KeyCode.Space) && jump)
         {
