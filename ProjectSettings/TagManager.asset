@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Note
   - Reach
+  - user
+  - Ghost
   layers:
   - Default
   - TransparentFX

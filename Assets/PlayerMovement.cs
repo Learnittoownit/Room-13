@@ -1,5 +1,5 @@
-using UnityEngine;
-using Unity.Hierarchy;
+ï»¿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,22 +9,31 @@ public class PlayerMovement : MonoBehaviour
     public GameObject PlayerCamera;
     public Rigidbody PlayerRB;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int health = 1; // Player starts with 1 life
+    float rotationCam = 0;
+
     void Start()
     {
-
+        // Optional initialization
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // ðŸ”¹ Sprinting
+        float currentSpeed = PlayerSpeed;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = 5f; // Sprint speed
+        }
 
+        // ðŸ”¹ Movement
+        float horizontal = Input.GetAxis("Horizontal") * currentSpeed;
+        float vertical = Input.GetAxis("Vertical") * currentSpeed;
 
-        float horoizontal = Input.GetAxis("Horizontal") * PlayerSpeed;
-        float vertical = Input.GetAxis("Vertical") * PlayerSpeed;
+        Vector3 movement = new Vector3(horizontal, PlayerRB.linearVelocity.y, vertical);
+        PlayerRB.linearVelocity = movement;
 
-        PlayerRB.linearVelocity = new Vector3(horoizontal, PlayerRB.linearVelocity.y, vertical);
-
+        // ðŸ”¹ Jumping
         if (Input.GetKeyDown(KeyCode.Space) && jump)
         {
             PlayerRB.AddForce(new Vector3(0, JumpSpeed, 0), ForceMode.Impulse);
@@ -32,10 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         MoveCamera();
-
     }
-
-    float rotationCam = 0;
 
     void MoveCamera()
     {
@@ -44,18 +50,33 @@ public class PlayerMovement : MonoBehaviour
 
         float mouseY = Input.GetAxis("Mouse Y");
         rotationCam -= mouseY;
-
         PlayerCamera.transform.localRotation = Quaternion.Euler(rotationCam, 0, 0);
-
     }
 
     void OnCollisionEnter(Collision collision)
     {
-
-
-        //åäÇ Ýí Çäå íÊÇßÏ Çä ÇáÇÚÈ ãæÌæÏ Úáì ÇáÇÑÖ æáÇ áÇ
         jump = true;
     }
 
-}
+    // ðŸ”¹ Take Damage
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
 
+    void Die()
+    {
+        Debug.Log("Player Died!");
+        gameObject.SetActive(false);
+        Invoke("RestartScene", 2f); // Restart after 2 seconds
+    }
+
+    void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+}
