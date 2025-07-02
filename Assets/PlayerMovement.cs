@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,31 +8,47 @@ public class PlayerMovement : MonoBehaviour
     public GameObject PlayerCamera;
     public Rigidbody PlayerRB;
 
-    public int health = 1; // Player starts with 1 life
-    float rotationCam = 0;
+    public AudioSource footstepAudio; // ✅ مصدر صوت الخطوات
+
+    private float rotationCam = 0f;
+
+    // 🩸 الصحة (1 فقط)
+    public int health = 1;
 
     void Start()
     {
-        // Optional initialization
+        Cursor.lockState = CursorLockMode.Confined; // ✅ الماوس ظاهر داخل نافذة اللعبة
+        Cursor.visible = true;
+
+        if (footstepAudio != null)
+        {
+            footstepAudio.loop = true; // تأكد من التكرار
+            footstepAudio.playOnAwake = false;
+        }
     }
 
     void Update()
     {
-        // 🔹 Sprinting
-        float currentSpeed = PlayerSpeed;
-        if (Input.GetKey(KeyCode.LeftShift))
+        float horoizontal = Input.GetAxis("Horizontal") * PlayerSpeed;
+        float vertical = Input.GetAxis("Vertical") * PlayerSpeed;
+
+        Vector3 direction = transform.forward * vertical + transform.right * horoizontal;
+        direction.y = PlayerRB.linearVelocity.y;
+
+        PlayerRB.linearVelocity = direction;
+
+        // 🚶‍♂️ تشغيل/إيقاف صوت الخطوات حسب الحركة
+        if ((horoizontal != 0 || vertical != 0) && jump)
         {
-            currentSpeed = 5f; // Sprint speed
+            if (!footstepAudio.isPlaying)
+                footstepAudio.Play();
+        }
+        else
+        {
+            if (footstepAudio.isPlaying)
+                footstepAudio.Stop();
         }
 
-        // 🔹 Movement
-        float horizontal = Input.GetAxis("Horizontal") * currentSpeed;
-        float vertical = Input.GetAxis("Vertical") * currentSpeed;
-
-        Vector3 movement = new Vector3(horizontal, PlayerRB.linearVelocity.y, vertical);
-        PlayerRB.linearVelocity = movement;
-
-        // 🔹 Jumping
         if (Input.GetKeyDown(KeyCode.Space) && jump)
         {
             PlayerRB.AddForce(new Vector3(0, JumpSpeed, 0), ForceMode.Impulse);
@@ -41,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         MoveCamera();
+        HandleInteraction(); // ✅ تفاعل مع الأشياء عند الضغط
     }
 
     void MoveCamera()
@@ -50,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
 
         float mouseY = Input.GetAxis("Mouse Y");
         rotationCam -= mouseY;
+        rotationCam = Mathf.Clamp(rotationCam, -90f, 90f);
+
         PlayerCamera.transform.localRotation = Quaternion.Euler(rotationCam, 0, 0);
     }
 
@@ -58,25 +76,34 @@ public class PlayerMovement : MonoBehaviour
         jump = true;
     }
 
-    // 🔹 Take Damage
-    public void TakeDamage(int damage)
+    void HandleInteraction()
     {
-        health -= damage;
-        if (health <= 0)
+        if (Input.GetMouseButtonDown(0)) // زر الفأرة الأيسر
         {
-            Die();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 3f)) // ✅ المدى 3 وحدات
+            {
+                Debug.Log("ضغطت على: " + hit.collider.name);
+
+                // مثال: لو فيه سكربت معين على الهدف
+                hit.collider.gameObject.SendMessage("OnInteract", SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 
-    void Die()
+    // 🛡️ دالة الضرر
+    public void TakeDamage(int damage)
     {
-        Debug.Log("Player Died!");
-        gameObject.SetActive(false);
-        Invoke("RestartScene", 2f); // Restart after 2 seconds
-    }
+        health -= damage;
+        Debug.Log("Player took damage! Current health: " + health);
 
-    void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (health <= 0)
+        {
+            Debug.Log("💀 Player is dead. Game Over.");
+            // تقدر تضيف هنا: إعادة المشهد، تجميد اللاعب، أو شاشة خسارة
+        }
     }
 }
+
