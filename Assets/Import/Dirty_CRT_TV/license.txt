@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dirty CRT TV
+* source:	https://sketchfab.com/3d-models/dirty-crt-tv-0ba08f11690646788fd4fce05455f249
+* author:	Mohammadhossein Deldar (https://sketchfab.com/MHdeldar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dirty CRT TV" (https://sketchfab.com/3d-models/dirty-crt-tv-0ba08f11690646788fd4fce05455f249) by Mohammadhossein Deldar (https://sketchfab.com/MHdeldar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
