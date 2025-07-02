@@ -40,10 +40,12 @@ public class Ghost : MonoBehaviour
         {
             Debug.Log("Ghost caught the player!");
             // Damage the player
-            PlayerMovement player = other.GetComponent<PlayerMovement>();
+            PlayerMovement2 player = other.GetComponent<PlayerMovement2>();
             if (player != null)
             {
                 player.TakeDamage(1); // Reduce player health by 1
+                Debug.Log("Ghost caught the player!");
+
             }
         }
     }
