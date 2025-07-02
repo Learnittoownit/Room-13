@@ -107,8 +107,8 @@ public class PlayerMovement2 : MonoBehaviour
             isDead = true;
             Debug.Log("💀 Player is dead. Game Over.");
 
-            // ✅ إعادة تحميل المشهد الحالي بعد 6 ثانية
-            Invoke("ReloadScene", 6f);
+            // ✅ إعادة تحميل المشهد الحالي بعد 2 ثانية
+            Invoke("ReloadScene", 2f);
         }
     }
 
