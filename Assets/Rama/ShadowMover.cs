@@ -5,6 +5,7 @@ public class ShadowMover : MonoBehaviour
     public float speed = 5f;
     public Vector3 moveDirection = Vector3.right;
     public float moveDistance = 5f;
+    public AudioSource moveAudioSource; // ✅ مصدر الصوت الجاهز
 
     private Vector3 startPosition;
     private bool moving = false;
@@ -24,7 +25,6 @@ public class ShadowMover : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 moving = false;
-               // transform.position = startPosition;
             }
         }
     }
@@ -33,5 +33,10 @@ public class ShadowMover : MonoBehaviour
     {
         Debug.Log("الظل بدأ يتحرك");
         moving = true;
+
+        if (moveAudioSource != null && !moveAudioSource.isPlaying)
+        {
+            moveAudioSource.Play();
+        }
     }
 }
