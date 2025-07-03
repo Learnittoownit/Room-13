@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement; // ✅ لإعادة تحميل المشهد
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement2 : MonoBehaviour
 {
@@ -13,9 +13,11 @@ public class PlayerMovement2 : MonoBehaviour
     public AudioSource footstepAudio;
 
     private float rotationCam = 0f;
-    public int health = 1;
 
-    private bool isDead = false; // ✅ منع تكرار الموت
+    public int PlayerHealth = 1;
+    public GameObject LosePanel;
+
+    private bool isDead = false;
 
     void Start()
     {
@@ -94,26 +96,30 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
-    // 🛡️ دالة الضرر
-    public void TakeDamage(int damage)
+    private void OnTriggerEnter(Collider other)
     {
-        if (isDead) return; // ✅ منع تكرار الضرر بعد الموت
-
-        health -= damage;
-        Debug.Log("Player took damage! Current health: " + health);
-
-        if (health <= 0)
+        if (other.CompareTag("Ghost"))
         {
-            isDead = true;
-            Debug.Log("💀 Player is dead. Game Over.");
-
-            // ✅ إعادة تحميل المشهد الحالي بعد 2 ثانية
-            Invoke("ReloadScene", 2f);
+            TakeDamage(1); // استدعاء الدالة الجديدة
+            other.gameObject.SetActive(false);
         }
     }
 
-    void ReloadScene()
+    // 🩸 دالة الضرر
+    public void TakeDamage(int damage)
     {
-        Time.timeScale = 0;
+        if (isDead) return;
+
+        PlayerHealth -= damage;
+        Debug.Log("Player took damage! Current health: " + PlayerHealth);
+
+        if (PlayerHealth <= 0)
+        {
+            isDead = true;
+            gameObject.SetActive(false);
+
+            if (LosePanel != null)
+                LosePanel.SetActive(true);
+        }
     }
 }
