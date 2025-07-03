@@ -17789,7 +17789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746d31f937ba9d4d8eb17d3ee61ee30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: endScene
+  SceneName: Rama
 --- !u!65 &1496920288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26234,7 +26234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5776448534708870098, guid: 18de3797fdc434111960e2defabdce03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.57
+      value: -16.59
       objectReference: {fileID: 0}
     - target: {fileID: 5776448534708870098, guid: 18de3797fdc434111960e2defabdce03, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26242,7 +26242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5776448534708870098, guid: 18de3797fdc434111960e2defabdce03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.32
+      value: -29.94
       objectReference: {fileID: 0}
     - target: {fileID: 5776448534708870098, guid: 18de3797fdc434111960e2defabdce03, type: 3}
       propertyPath: m_LocalRotation.w
